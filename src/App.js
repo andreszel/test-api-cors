@@ -1,12 +1,8 @@
 import React, { PureComponent } from "react";
 
-const API_PREFIX = "https://odbioromatdevapi.bookinglock.com/v1";
+const API_PREFIX = "https://testapicors.bookinglock.com";
 
 const URLS_API = {
-  boxes: API_PREFIX + "/odbioromat/boxes",
-  box_free: API_PREFIX + "/odbioromat/box-free",
-  code: API_PREFIX + "/odbioromat/code",
-  code_quick_add: API_PREFIX + "/odbioromat/code-quick-add",
   login: API_PREFIX + "/login"
 };
 
@@ -14,8 +10,8 @@ class App extends PureComponent {
 
   state = {
     dataAccess:{
-      loginSys: "",
-      passSys: "",
+      login: "",
+      pass: "",
       jwt: "",
       odbioromat_id: "",
     },
@@ -38,8 +34,8 @@ class App extends PureComponent {
 
    loginToSystem = () => {
     const dataAccess = {
-      loginSys: "358d09070047c700a0c9f1d2791d71134",
-      passSys: "n6aHKZhejysg",
+      login: "358d09070047c700a0c9f1d2791d71134",
+      pass: "n6aHKZhejysg",
       jwt: "",
       odbioromat_id: "",
     };
@@ -50,7 +46,7 @@ class App extends PureComponent {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ login: dataAccess.loginSys, password: dataAccess.passSys }),
+      body: JSON.stringify({ login: dataAccess.login, password: dataAccess.pass }),
     };
 
     fetch(URLS_API.login, requestOptions)
@@ -65,7 +61,7 @@ class App extends PureComponent {
           jwt: res.jwt,
           odbioromat_id: res.odbioromat_id,
         });
-        
+
         //const timeTokenExp = (res.data.exp*1000);
         //const currentTime = new Date().getTime();
         //const diffTime = timeTokenExp-currentTime;
