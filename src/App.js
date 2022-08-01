@@ -43,6 +43,7 @@ class App extends PureComponent {
       method: 'POST',
       mode: 'cors',
       cache: 'no-cache',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
